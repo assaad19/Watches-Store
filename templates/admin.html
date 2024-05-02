@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Admin | Luxury Watches</title>
+    <link
+      rel="icon"
+      type="image/x-icon"
+      href="{{url_for('static', filename='assets/favicon.jpg')}}"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{{ url_for('static', filename='style.css') }}"
+    />
+
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{{ url_for('static', filename='css/all.min.css') }}"
+    />
+  </head>
+
+  <body>
+    <div id="home--page">
+      <div class="img--container" style="overflow: hidden" id="home">
+        <img
+          src="{{url_for('static', filename='assets/homeBackground.jpg')}}"
+          style="vertical-align: bottom"
+        />
+        <nav
+          class="white--text padd--t--l rolex--font img--text"
+          style="z-index: 2"
+        >
+          <ul class="list--flex normal--font">
+            <li class="marg--l--1">
+              <a href="{{url_for('dashboard')}}">DASHBOARD</a>
+            </li>
+            <li class="marg--l--1">
+              <a href="{{url_for('view_users')}}">VIEW USERS</a>
+            </li>
+            <li class="marg--l--1">
+              <form action="/logout" method="POST">
+                <button type="submit" class="normal--font rolex--font">
+                  SIGN OUT
+                </button>
+              </form>
+            </li>
+          </ul>
+        </nav>
+
+        <div
+          class="white--text big--font flex--column flex--center rolex--font padd--t--15rem img--text"
+          style="white-space: nowrap; padding-left: 2rem; z-index: 1"
+        >
+          <span class="marg--b--1">LUXURY WATCHES</span>
+          <a href="#products" style="color: #000">
+            <button class="btn--1 normal--font">Products</button>
+          </a>
+        </div>
+      </div>
+      <div
+        class="white--text padd--tb--3rem normal--font rolex--font flex--center flex--column about--us lin--gr--bg--1"
+        id="about"
+      >
+        <h1 class="max--width--700px marg--b--3">Welcome Back, {{username}}</h1>
+      </div>
+
+      <div
+        class="white--text padd--tb--3rem rolex--font flex--center flex--column normal--font lin--gr--bg--2"
+        id="products"
+      >
+        <a href="{{url_for('add_product')}}">
+          <button style="color: #000" class="btn--1 normal--font marg--b--3">
+            Add Products
+          </button>
+        </a>
+
+        <i class="fa-solid fa-circle-arrow-down fa-2x"></i>
+
+        {% for product in products %}
+        <div class="product">
+          <div class="product--img">
+            <img
+              src="{{ url_for('static', filename='assets/' + product.image_filename) }}"
+              alt="{{ product.product_name }}"
+              width="225"
+              height="225"
+            />
+          </div>
+          <div class="product--desc">
+            <h2 class="marg--b--1">{{ product.product_name }}</h2>
+            <p class="marg--b--1">{{ product.description }}</p>
+            <p class="marg--b--1">$ {{ product.price }}</p>
+            <div>
+              <a
+                href="{{ url_for('edit_product', product_id=product.product_id) }}"
+              >
+                <button class="btn--2 small--font">Edit Product</button>
+              </a>
+            </div>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+    <div class="copyrights flex-center rolex--font">
+      Luxury Watches Inc, &copy; 2024. All rights reserved.
+    </div>
+
+    <script src="{{url_for('static', filename='index.js')}}"></script>
+  </body>
+</html>

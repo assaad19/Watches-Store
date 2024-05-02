@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="icon"
+      type="image/x-icon"
+      href="{{url_for('static', filename='assets/favicon.jpg')}}"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{{ url_for('static', filename='style.css') }}"
+    />
+
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{{ url_for('static', filename='css/all.min.css') }}"
+    />
+    <style>
+      /* style.css */
+
+      /* Body styles */
+      body {
+        background: linear-gradient(
+          #5e5e5e,
+          #222,
+          #5e5e5e
+        ); /* Light gray background */
+        color: #fff; /* Dark text color */
+        font-family: Arial, sans-serif; /* Choose a font */
+      }
+
+      /* Header styles */
+      header {
+        background: linear-gradient(
+          to bottom right,
+          #4e7dff,
+          #1976d2
+        ); /* Blue gradient */
+        padding: 20px;
+      }
+
+      /* Navbar styles */
+      nav {
+        background: #ffffff; /* White background */
+        padding: 10px;
+      }
+
+      /* Plot container styles */
+      #plot1,
+      #plot2,
+      #plot3,
+      #plot4 {
+        background: linear-gradient(
+          to bottom right,
+          #e0e0e0,
+          #c0c0c0
+        ); /* Gray gradient */
+        border-radius: 10px;
+        margin: 20px;
+        padding: 20px;
+        max-width: 850px;
+      }
+
+      /* Additional styling for plots */
+      #plot1 {
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Add shadow effect */
+      }
+
+      #plot2 {
+        border: 2px solid #4e7dff; /* Blue border */
+      }
+
+      #plot3 {
+        border: 2px solid #4e7dff; /* Blue border */
+      }
+
+      #plot4 {
+        border: 2px solid #4e7dff; /* Blue border */
+      }
+    </style>
+    <title>Dashboard | Luxury Watches</title>
+    {{ plotly_js }}
+  </head>
+  <body>
+    <ul class="list--flex normal--font rolex--font padd--tb--3rem marg--l--1">
+      <li class="marg--l--1">
+        <form action="/logout" method="POST">
+          <button type="submit" class="normal--font rolex--font">
+            SIGN OUT
+          </button>
+        </form>
+      </li>
+    </ul>
+    <div style="display: flex">
+      <div id="plot1">{{ plot_div1|safe }}</div>
+      <div class="plot--desc">
+        The plot shows the trend of Rolex prices over time from 2018 to 2023.
+        The data points are plotted as a series of connected points, forming a
+        line that moves up and down over time. From 2018 to 2020, the price of
+        Rolex watches appears to be decreasing, with the data points moving
+        downward along the y-axis. Specifically, the price decreases from 29k in
+        2018 to 24k in 2020. However, in 2021, there is a sharp increase in the
+        price of Rolex watches, with the data point jumping up to 29k. This
+        represents a significant increase in price, and it suggests that the
+        demand for Rolex watches may have gone up in 2021. After the spike in
+        2021, the price of Rolex watches appears to decrease slightly in 2022,
+        but it remains relatively stable at around 28k. Finally, in 2023, the
+        price of Rolex watches increases slightly to 29k, which is the same
+        price as it was in 2018.
+      </div>
+    </div>
+    <div style="display: flex">
+      <div class="plot--desc">
+        The vertical axis labeled "Number of visitors" suggests this is a
+        website traffic graph, not a price trend. It is possible that the
+        website traffic could be related to interest in Cartier products and
+        could indirectly reflect price trends, but the graph itself does not
+        show price information. Here's what we can learn about the website
+        traffic according to the graph: Traffic fluctuates over time There were
+        more visitors in 2019 than any other year shown on the graph There
+        appears to be a general downward trend in traffic since 2019
+      </div>
+      <div id="plot2">{{ plot_div2|safe }}</div>
+    </div>
+    <div style="display: flex">
+      <div id="plot3">{{ plot_div3|safe }}</div>
+      <div class="plot--desc">
+        The line graph shows an upward trend over a five year period. Here's
+        what we can learn about the data presented in the graph: The price
+        starts at around $85,000 in 2018 and ends at around $105,000 in 2023.
+        There is a steady increase in price over the five years. It is important
+        to note that without knowing what the y-axis label refers to, it is
+        impossible to say for certain what this graph is showing.
+      </div>
+    </div>
+    <div style="display: flex">
+      <div class="plot--desc">
+        The y-axis shows the price and goes from $125,000 to $160,000. The
+        x-axis shows the years and goes from 2018 to 2023. Here’s what we can
+        learn about the Patek Philippe price trend according to the graph:
+        Prices have been steadily increasing over the past five years. The
+        biggest price increase year over year was between 2021 and 2022, with a
+        jump of $25,000. It is important to note that this graph only shows data
+        for five years. It is possible that Patek Philippe prices have
+        fluctuated more dramatically over a longer time period.
+      </div>
+      <div id="plot4">{{ plot_div4|safe }}</div>
+    </div>
+    <div class="copyrights flex-center rolex--font">
+      Luxury Watches Inc, &copy; 2024. All rights reserved.
+    </div>
+  </body>
+</html>

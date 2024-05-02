@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Home | Luxury Watches</title>
+    <link
+      rel="icon"
+      type="image/x-icon"
+      href="{{url_for('static', filename='assets/favicon.jpg')}}"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{{ url_for('static', filename='style.css') }}"
+    />
+
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{{ url_for('static', filename='css/all.min.css') }}"
+    />
+  </head>
+
+  <body>
+    <div id="home--page">
+      <div class="img--container" style="overflow: hidden" id="home">
+        <img
+          src="{{url_for('static', filename='assets/homeBackground.jpg')}}"
+          style="vertical-align: bottom"
+        />
+        <nav
+          class="white--text padd--t--l rolex--font img--text"
+          style="z-index: 2"
+        >
+          <ul class="list--flex normal--font">
+            <li><a href="#home">HOME</a></li>
+            <li class="marg--l--1"><a href="#about">ABOUT US</a></li>
+            <li class="marg--l--1"><a href="#reviews">REVIEWS</a></li>
+            <li class="marg--l--1"><a href="#contact">CONTACT</a></li>
+            <li class="marg--l--1">
+              <a href="{{url_for('dashboard')}}">DASHBOARD</a>
+            </li>
+            <li class="marg--l--1">
+              <form action="/logout" method="POST">
+                <button type="submit" class="normal--font rolex--font">
+                  SIGN OUT
+                </button>
+              </form>
+            </li>
+
+            <li class="marg--l--1" style="position: fixed; right: 2rem">
+              <a href="{{ url_for('view_cart') }}">
+                <i class="fa-solid fa-bag-shopping normal--font fa-2x"></i>
+              </a>
+            </li>
+          </ul>
+        </nav>
+
+        <div
+          class="white--text big--font flex--column flex--center rolex--font padd--t--15rem img--text"
+          style="white-space: nowrap; padding-left: 2rem; z-index: 1"
+        >
+          <span class="marg--b--1">LUXURY WATCHES</span>
+          <a href="#products" style="color: #000">
+            <button class="btn--1 normal--font">SHOP ALL</button>
+          </a>
+        </div>
+      </div>
+      <div
+        class="white--text padd--tb--3rem normal--font rolex--font flex--center flex--column about--us lin--gr--bg--1"
+        id="about"
+      >
+        <h1 class="max--width--700px marg--b--3">Luxury Watches .inc</h1>
+        <p class="max--width--700px padd--b--1">
+          Welcome to our luxury watches shop! We are dedicated to providing the
+          finest selection of high-end watches from prestigious brands around
+          the world. Our passion for horology and commitment to excellence drive
+          us to curate a collection of timepieces that embody sophistication,
+          craftsmanship, and timeless elegance.
+        </p>
+        <p class="max--width--700px">
+          At High-End Luxury Watches Shop, we understand that a luxury watch is
+          more than just a timekeeping device; it's a statement of style,
+          status, and individuality. Whether you're a seasoned collector or a
+          first-time buyer, our knowledgeable staff is here to assist you in
+          finding the perfect watch to complement your lifestyle.
+        </p>
+        <p class="max--width--700px">
+          Visit our store today and experience the luxury of time.
+        </p>
+      </div>
+      <div
+        class="white--text padd--tb--3rem rolex--font flex--center flex--column normal--font lin--gr--bg--2"
+        id="products"
+      >
+        <h1 class="marg--b--3">Explore Our Products</h1>
+        <i class="fa-solid fa-circle-arrow-down fa-2x"></i>
+
+        {% for product in products %}
+        <div class="product">
+          <div class="product--img">
+            <img
+              src="{{ url_for('static', filename='assets/' + product.image_filename) }}"
+              alt="{{ product.product_name }}"
+              width="225"
+              height="225"
+            />
+          </div>
+          <div class="product--desc">
+            <h2 class="marg--b--1">{{ product.product_name }}</h2>
+            <p class="marg--b--1">{{ product.description }}</p>
+            <p class="marg--b--1">$ {{ product.price }}</p>
+            <div>
+              <form
+                action="{{ url_for('add_to_cart', product_id=product.product_id) }}"
+                method="POST"
+              >
+                <button type="submit" class="btn--2 small--font">
+                  Add to Cart
+                </button>
+              </form>
+            </div>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+      <div
+        class="uni--us lin--gr--bg--1 white--text padd--tb--3rem rolex--font flex--center flex--column normal--font"
+      >
+        <h1 class="marg--b--3">What makes us unique</h1>
+        <div class="unique-column">
+          <h2>Quality Craftsmanship</h2>
+          <p>
+            Our products are meticulously crafted using the finest materials and
+            precision techniques, ensuring durability and longevity.
+          </p>
+        </div>
+        <div class="unique-column">
+          <h2>Exceptional Service</h2>
+          <p>
+            We pride ourselves on providing unparalleled customer service, going
+            above and beyond to meet our customers' needs and expectations.
+          </p>
+        </div>
+        <div class="unique-column" style="padding-bottom: 2.5rem">
+          <h2>Innovative Design</h2>
+          <p>
+            Our team of designers are constantly pushing the boundaries of
+            innovation, creating unique and cutting-edge designs that set us
+            apart from the competition.
+          </p>
+        </div>
+      </div>
+
+      <div
+        class="rev-section lin--gr--bg--2 white--text padd--tb--3rem rolex--font flex--center flex--column normal--font"
+        id="reviews"
+      >
+        <h1 class="marg--b--3">Reviews</h1>
+
+        <div class="reviews">
+          <div class="review">
+            <div class="head-review">
+              <img
+                class="img--rev"
+                src="{{url_for('static', filename='assets/hh1.avif')}}"
+                width="250px"
+              />
+            </div>
+            <div class="body-review">
+              <div class="name-review">Sam.B</div>
+              <div class="place-review">Germany</div>
+              <div class="rating">
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star-half"></i>
+              </div>
+              <div class="desc-review">
+                Indulgence meets impeccable timing! Shopping at this luxury
+                watches website is like taking a joyride in a time machine
+                through elegance and sophistication. Who needs a DeLorean when
+                you can strap on one of these beauties and instantly feel like a
+                million bucks?
+              </div>
+            </div>
+          </div>
+          <div class="review">
+            <div class="head-review">
+              <img
+                class="img--rev"
+                src="{{url_for('static', filename='assets/hh3.jfif')}}"
+                width="250px"
+              />
+            </div>
+            <div class="body-review">
+              <div class="name-review">Elizabeth</div>
+              <div class="place-review">London</div>
+              <div class="rating">
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+              </div>
+              <div class="desc-review">
+                Forget about counting sheep, I've been counting the seconds
+                until my next visit to this luxury watches website! It's the
+                ultimate playground for horology enthusiasts and those with a
+                penchant for opulence. Warning: may cause severe watch envy
+                among friends and family!
+              </div>
+            </div>
+          </div>
+          <div class="review">
+            <div class="head-review">
+              <img
+                class="img--rev"
+                src="{{ url_for('static', filename='assets/hh2.jpg') }}"
+                width="250px"
+              />
+            </div>
+            <div class="body-review">
+              <div class="name-review">David B.</div>
+              <div class="place-review">London</div>
+              <div class="rating">
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star-half"></i>
+              </div>
+              <div class="desc-review">
+                If time is money, then this website is a gold mine! Each click
+                is like uncovering a hidden gem in the world of haute
+                horlogerie. Whether you're a seasoned collector or just looking
+                to elevate your wrist game, this is the destination for
+                timepiece aficionados with a taste for the finer things in life.
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        class="lin--gr--bg--1 white--text padd--tb--3rem rolex--font flex--center flex--column normal--font"
+        id="contact"
+      >
+        <h1 class="marg--b--3">Contact Our Sales</h1>
+        <form action="/email" method="POST" class="contact-form">
+          <div class="form-group">
+            <label for="name" class="label-f">Your Name:</label>
+            <input
+              autocomplete="off"
+              type="text"
+              id="name"
+              name="name"
+              required
+            />
+          </div>
+          <div class="form-group">
+            <label for="email" class="label-f">Your Email:</label>
+            <input
+              autocomplete="off"
+              type="email"
+              id="email"
+              name="email"
+              required
+            />
+          </div>
+          <div class="form-group">
+            <label for="password" class="label-f">Your Password:</label>
+            <input
+              autocomplete="off"
+              type="password"
+              id="password"
+              name="password"
+              required
+            />
+          </div>
+          <div class="form-group">
+            <label for="message" class="label-f">Message:</label>
+            <textarea id="message" name="message" rows="5" required></textarea>
+          </div>
+          <div class="align--center">
+            <button class="btn--2 small--font">Send Message</button>
+          </div>
+        </form>
+      </div>
+    </div>
+    <div class="copyrights flex-center">
+      Luxury Watches Inc, &copy; 2024. All rights reserved.
+    </div>
+
+    <script src="{{url_for('static', filename='index.js')}}"></script>
+  </body>
+</html>

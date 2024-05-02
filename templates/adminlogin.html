@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login | Luxury Watches</title>
+    <link
+      rel="icon"
+      type="image/x-icon"
+      href="{{ url_for('static', filename='assets/favicon.jpg') }}"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{{ url_for('static', filename='style.css') }}"
+    />
+
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{{ url_for('static', filename='css/all.min.css') }}"
+    />
+
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      :root {
+        width: 100%;
+        height: 100%;
+      }
+
+      body {
+        background-color: #313131;
+        font-family: Rolex;
+      }
+
+      form {
+        max-width: 400px;
+        padding: 1.5rem;
+        border: 5px solid #fff;
+        border-radius: 1rem;
+        margin: auto;
+      }
+
+      label {
+        margin-bottom: 0.35rem;
+      }
+
+      input {
+        padding: 0.5rem;
+        border: none;
+        border-radius: 5rem;
+      }
+
+      h1 {
+        margin-top: 12rem;
+        margin-bottom: 3rem;
+      }
+    </style>
+  </head>
+  <body>
+    <div>
+      <h1 class="align--center white--text rolex--font">Welcome Again!</h1>
+      <form
+        action="/adminlogin"
+        method="post"
+        class="flex--column white--text black--bg"
+      >
+        <label for="username" class="normal--font">Username</label>
+        <input
+          type="text"
+          id="username"
+          name="username"
+          class="marg--b--1 rolex--font"
+          autofocus
+          autocomplete="off"
+        />
+
+        <label for="password" class="normal--font">Password</label>
+        <input
+          type="password"
+          id="password"
+          name="password"
+          class="marg--b--3 rolex--font"
+          autofocus
+          autocomplete="off"
+        />
+
+        <label for="password" class="normal--font">Secret Key</label>
+        <input
+          type="password"
+          id="secretkey"
+          name="secretkey"
+          class="marg--b--3 rolex--font"
+          autofocus
+          autocomplete="off"
+        />
+
+        <div class="align--center flex--evenly flex--center">
+          <i class="fa-solid fa-circle-arrow-right white--text"></i>
+          <button class="btn--1 normal--font" type="submit">Sign in</button>
+          <i class="fa-solid fa-circle-arrow-left white--text"></i>
+        </div>
+
+        <a href="{{ url_for('login') }}" class="marg--t--1 flex--center"
+          >or Login as a user</a
+        >
+      </form>
+    </div>
+    <div class="copyrights flex-center">
+      Luxury Watches Inc, &copy; 2024. All rights reserved.
+    </div>
+  </body>
+</html>

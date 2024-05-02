@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>View Cart | Luxury Watches</title>
+    <link
+      rel="icon"
+      type="image/x-icon"
+      href="{{url_for('static', filename='assets/favicon.jpg')}}"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{{ url_for('static', filename='style.css') }}"
+    />
+
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{{ url_for('static', filename='css/all.min.css') }}"
+    />
+    <style>
+      body {
+        background-color: #000;
+        color: #fff;
+        font-family: Arial, sans-serif;
+      }
+      .container {
+        margin: 0 auto;
+        width: 50%;
+        padding: 20px;
+      }
+      .cart-item {
+        border: 1px solid #fff;
+        padding: 10px;
+        margin-bottom: 20px;
+      }
+      .cart-item h3 {
+        margin-top: 0;
+      }
+      .cart-item p {
+        margin-bottom: 5px;
+      }
+      .cart-total {
+        border-top: 1px solid #fff;
+        margin-top: 20px;
+        padding-top: 10px;
+        font-size: 1.2em;
+        font-weight: bold;
+      }
+      .btn {
+        background-color: #000;
+        color: #fff;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+      }
+      .btn:hover {
+        background-color: #333;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Shopping Cart</h1>
+      <br /><br />
+      {% for product in cart_contents %}
+      <div class="cart-item">
+        <h3>{{ product.product_name }}</h3>
+        <p>Description: {{ product.description }}</p>
+        <p>Price: {{ product.price }}</p>
+      </div>
+      {% endfor %}
+      <div class="cart-total">
+        Total: ${{ total_price }}
+        <!-- Assuming you calculate the total price in your view function -->
+      </div>
+      <button class="btn" onclick="checkout()">Checkout</button>
+      <!-- Modify the URL as needed -->
+    </div>
+    <div class="copyrights flex-center">
+      Luxury Watches Inc, &copy; 2024. All rights reserved.
+    </div>
+
+    <script src="{{url_for('static',filename='index.js')}}"></script>
+  </body>
+</html>
