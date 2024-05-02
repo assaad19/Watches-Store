@@ -58,7 +58,7 @@ def init_routes(app):
             password = request.form['password']
             secretkey = request.form['secretkey']
             
-            if username == 'ridanasser' and password == 'f@ceB00mrida' and secretkey == secret_key:
+            if username == 'admin' and password == 'adminpass' and secretkey == secret_key:
                 session['username'] = username
                 return redirect(url_for('admin'))
             else:
