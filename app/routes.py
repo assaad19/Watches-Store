@@ -6,7 +6,9 @@ from werkzeug.utils import secure_filename
 import pandas as pd
 import plotly.express as px
 
+# APP'S SECRET KEY
 secret_key = 'supersecretkey'
+
 finale_data = pd.read_csv('static/final_watches.csv')
 
 Rolex_data = finale_data[finale_data['brand'] == 'Rolex']
@@ -58,7 +60,7 @@ def init_routes(app):
             password = request.form['password']
             secretkey = request.form['secretkey']
             
-            if username == 'admin' and password == 'adminpass' and secretkey == secret_key:
+            if username == 'adminusername' and password == 'adminpassword' and secretkey == secret_key:
                 session['username'] = username
                 return redirect(url_for('admin'))
             else:
