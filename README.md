@@ -60,4 +60,4 @@ Contributions are welcome! Open an issue or submit a pull request for improvemen
 This project is licensed under the MIT License.
 
 ## Contact
-For any inquiries, reach out via [LinkedIn](https://www.linkedin.com/in/ridanasser) or email at [rida.nasser@outlook.com](mailto:rida.nasser@outlook.com) .
+For any inquiries, reach out via [LinkedIn](https://www.linkedin.com/in/assaad-akl-/) or email at [assaad.akl@outlook.com](mailto:assaad.akl@outlook.com) .
